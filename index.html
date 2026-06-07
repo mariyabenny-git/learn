@@ -206,7 +206,9 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 0.6rem;
+      margin-top: 1.5rem;
     }
+    .project > .section-label:first-of-type { margin-top: 0; }
 
     .folder {
       background: var(--bg);
@@ -236,6 +238,7 @@
     }
     .schema .key { color: var(--accent); }
     .schema .str { color: var(--green); }
+    .schema .num-val { color: var(--purple); }
     .schema .comment { color: #545d68; font-style: italic; }
 
     .checklist { list-style: none; margin-bottom: 1.5rem; }
@@ -268,6 +271,7 @@
       border: 1px solid rgba(188, 140, 255, 0.2);
       border-radius: var(--radius);
       padding: 1rem 1.25rem;
+      margin-top: 1.5rem;
     }
     .bonus__title {
       font-family: var(--mono);
@@ -323,7 +327,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      overflow-hidden;
+      overflow: hidden;
     }
 
     .lb-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
@@ -583,8 +587,23 @@
       <div class="project active" id="portfolio">
         <div class="project__title">Student Portfolio</div>
         <div class="project__desc">A personal profile page that loads all content from a JSON file.</div>
+        
         <div class="section-label">Folder Structure</div>
         <div class="folder">📁 student-portfolio/<br>&nbsp;&nbsp;├── <span>index.html</span><br>&nbsp;&nbsp;├── <span>style.css</span><br>&nbsp;&nbsp;├── <span>script.js</span><br>&nbsp;&nbsp;└── <span>profile.json</span></div>
+        
+        <div class="section-label">Technical Schema (profile.json)</div>
+        <div class="schema">{
+  <span class="key">"name"</span>: <span class="str">"Your Name"</span>,
+  <span class="key">"role"</span>: <span class="str">"Developer / Designer"</span>,
+  <span class="key">"skills"</span>: [<span class="str">"HTML"</span>, <span class="str">"CSS"</span>, <span class="str">"JavaScript"</span>],
+  <span class="key">"projects"</span>: [
+    {
+      <span class="key">"title"</span>: <span class="str">"Project Name"</span>,
+      <span class="key">"description"</span>: <span class="str">"Brief details..."</span>
+    }
+  ]
+}</div>
+
         <div class="section-label">Task Checklist</div>
         <ol class="checklist">
           <li><span class="num">1</span> Set up the 4 files — index.html, style.css, script.js, profile.json</li>
@@ -596,13 +615,34 @@
           <li><span class="num">7</span> Add client interactive smooth scroll transitions</li>
           <li><span class="num">8</span> Deploy project repository on GitHub Pages hosting</li>
         </ol>
+
+        <div class="bonus">
+          <div class="bonus__title">Bonus Challenges</div>
+          <ul>
+            <li>Add a Dark/Light theme toggle switch powered by LocalStorage state.</li>
+            <li>Incorporate tiny hover animations on skill micro-badges.</li>
+          </ul>
+        </div>
       </div>
 
       <div class="project" id="recipe">
         <div class="project__title">Recipe Book</div>
         <div class="project__desc">A browsable recipe collection filtered by runtime dynamic categories.</div>
+        
         <div class="section-label">Folder Structure</div>
         <div class="folder">📁 recipe-book/<br>&nbsp;&nbsp;├── <span>index.html</span><br>&nbsp;&nbsp;├── <span>style.css</span><br>&nbsp;&nbsp;├── <span>script.js</span><br>&nbsp;&nbsp;└── <span>recipes.json</span></div>
+        
+        <div class="section-label">Technical Schema (recipes.json)</div>
+        <div class="schema">[
+  {
+    <span class="key">"id"</span>: <span class="num-val">1</span>,
+    <span class="key">"title"</span>: <span class="str">"Classic Pancakes"</span>,
+    <span class="key">"category"</span>: <span class="str">"Breakfast"</span>,
+    <span class="key">"ingredients"</span>: [<span class="str">"Flour"</span>, <span class="str">"Milk"</span>, <span class="str">"Eggs"</span>],
+    <span class="key">"instructions"</span>: [<span class="str">"Mix ingredients"</span>, <span class="str">"Cook on skillet"</span>]
+  }
+]</div>
+
         <div class="section-label">Task Checklist</div>
         <ol class="checklist">
           <li><span class="num">1</span> Setup codebase context files architecture components</li>
@@ -614,13 +654,36 @@
           <li><span class="num">7</span> Render comprehensive target step details modal layers</li>
           <li><span class="num">8</span> Standardize fully adapted desktop and viewport views</li>
         </ol>
+
+        <div class="bonus">
+          <div class="bonus__title">Bonus Challenges</div>
+          <ul>
+            <li>Build a working "Favorites" shelf using localStorage arrays.</li>
+            <li>Add a dynamic "Servings Scaler" that changes ingredient quantities instantly.</li>
+          </ul>
+        </div>
       </div>
 
       <div class="project" id="quiz">
         <div class="project__title">Quiz App</div>
         <div class="project__desc">An interactive trivia game mapping response validations from JSON records.</div>
+        
         <div class="section-label">Folder Structure</div>
         <div class="folder">📁 quiz-app/<br>&nbsp;&nbsp;├── <span>index.html</span><br>&nbsp;&nbsp;├── <span>style.css</span><br>&nbsp;&nbsp;├── <span>script.js</span><br>&nbsp;&nbsp;└── <span>questions.json</span></div>
+        
+        <div class="section-label">Technical Schema (questions.json)</div>
+        <div class="schema">[
+  {
+    <span class="key">"question"</span>: <span class="str">"What does CSS stand for?"</span>,
+    <span class="key">"options"</span>: [
+      <span class="str">"Creative Style Sheets"</span>,
+      <span class="str">"Cascading Style Sheets"</span>,
+      <span class="str">"Computer Style Sheets"</span>
+    ],
+    <span class="key">"correct"</span>: <span class="num-val">1</span> <span class="comment">// Index matching correct array choice</span>
+  }
+]</div>
+
         <div class="section-label">Task Checklist</div>
         <ol class="checklist">
           <li><span class="num">1</span> Build initial boilerplate document mapping definitions</li>
@@ -632,6 +695,14 @@
           <li><span class="num">7</span> Display performance percentage aggregates screens metrics</li>
           <li><span class="num">8</span> Polish feedback color triggers and fade transitions</li>
         </ol>
+
+        <div class="bonus">
+          <div class="bonus__title">Bonus Challenges</div>
+          <ul>
+            <li>Incorporate a responsive 15-second visual countdown timer per problem card.</li>
+            <li>Generate a final breakdown log reviewing incorrect selections at summary completion.</li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -751,7 +822,6 @@
       }
     }
 
-    // Fixed Regex Link Parser
     function parseGithubUrl(url) {
       try {
         let clean = url.trim().replace(/\/$/, "").replace(/\.git$/, "");
