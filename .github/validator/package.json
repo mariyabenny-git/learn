@@ -1,16 +1,10 @@
 {
-  "name": "learn-by-building-validator",
+  "name": "learn-by-building-validator-core",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
-  "description": "Validator scripts for Learn by Building platform",
+  "description": "Functional validation test runners for student submissions",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "validate:local": "node index.js --path ./test-recipe.json --output ./result.json",
-    "validate:remote": "node index.js --path https://api.example.com/quiz.json --output ./remote-result.json"
-  },
   "dependencies": {
-    "node-fetch": "^3.3.2"
+    "cheerio": "^1.0.0-rc.12"
   }
 }
