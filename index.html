@@ -285,40 +285,45 @@
     .bonus li { padding: 0.2rem 0; color: var(--text-muted); }
     .bonus li::before { content: '★ '; color: var(--purple); }
 
-    /* ── Tips Styling ── */
-    .tips {
-      margin-top: 2.5rem;
-      padding: 1.5rem;
+    /* ── Info Panels (Tips, Actions) ── */
+    .info-panels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .panel-box {
+      padding: 1.25rem 1.5rem;
       border: 1px dashed var(--border);
       border-radius: var(--radius);
-      background: rgba(210, 153, 34, 0.02);
+      background: rgba(255, 255, 255, 0.01);
     }
-    .tips__title {
+    .panel-box.yellow-box { border-color: rgba(210, 153, 34, 0.3); background: rgba(210, 153, 34, 0.01); }
+    .panel-box.red-box { border-color: rgba(248, 81, 73, 0.3); background: rgba(248, 81, 73, 0.01); }
+    
+    .panel-box__title {
       font-family: var(--mono);
       font-size: 0.75rem;
-      color: var(--yellow);
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 0.75rem;
       font-weight: 600;
     }
-    .tips ul { list-style: none; font-size: 0.88rem; color: var(--text-muted); }
-    .tips li { padding: 0.4rem 0; position: relative; padding-left: 1.25rem; }
-    .tips li::before {
-      content: '→';
+    .panel-box.yellow-box .panel-box__title { color: var(--yellow); }
+    .panel-box.red-box .panel-box__title { color: var(--red); }
+
+    .panel-box ul { list-style: none; font-size: 0.85rem; color: var(--text-muted); }
+    .panel-box li { padding: 0.35rem 0; position: relative; padding-left: 1.25rem; }
+    .panel-box li::before {
       position: absolute;
       left: 0;
-      color: var(--yellow);
       font-weight: bold;
     }
+    .panel-box.yellow-box li::before { content: '→'; color: var(--yellow); }
+    .panel-box.red-box li::before { content: '✖'; color: var(--red); font-size: 0.75rem; top: 1px; }
 
-    /* ── Leaderboard Table & Layout ── */
-    .lb-filters {
-      display: flex;
-      gap: 0.4rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
+    /* ── Leaderboard Styles ── */
+    .lb-filters { display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; }
     .lb-filter {
       font-family: var(--mono);
       font-size: 0.72rem;
@@ -333,13 +338,7 @@
     .lb-filter:hover { border-color: var(--accent); color: var(--text); }
     .lb-filter.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
 
-    .lb-table-wrap {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-
+    .lb-table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
     .lb-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
     .lb-table thead tr { border-bottom: 1px solid var(--border); background: var(--bg); }
     .lb-table th {
@@ -352,718 +351,38 @@
       padding: 0.65rem 1rem;
       text-align: left;
     }
-    .lb-table td {
-      padding: 0.7rem 1rem;
-      border-bottom: 1px solid rgba(42, 49, 59, 0.5);
-      vertical-align: middle;
-    }
+    .lb-table td { padding: 0.7rem 1rem; border-bottom: 1px solid rgba(42, 49, 59, 0.5); vertical-align: middle; }
     .lb-table tbody tr:last-child td { border-bottom: none; }
     .lb-table tbody tr:hover { background: var(--surface-hover); }
 
-    .rank-badge {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 500;
-      min-width: 26px;
-      height: 26px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-    }
+    .rank-badge { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; min-width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; }
     .rank-1 { background: rgba(210,153,34,0.2); color: #d29922; }
     .rank-2 { background: rgba(139,148,158,0.2); color: #8b949e; }
     .rank-3 { background: rgba(174,124,90,0.2); color: #ae7c5a; }
     .rank-other { background: var(--accent-dim); color: var(--accent); }
 
     .lb-username { font-family: var(--mono); font-size: 0.8rem; color: var(--text); }
-
-    .lb-project {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      padding: 0.15rem 0.5rem;
-      border-radius: 20px;
-      text-transform: capitalize;
-      margin-right: 0.25rem;
-      display: inline-block;
-    }
+    .lb-project { font-family: var(--mono); font-size: 0.68rem; padding: 0.15rem 0.5rem; border-radius: 20px; text-transform: capitalize; margin-right: 0.25rem; display: inline-block; }
     .lb-project.portfolio { background: var(--accent-dim); color: var(--accent); }
     .lb-project.recipe    { background: var(--green-dim);  color: var(--green);  }
     .lb-project.quiz      { background: var(--purple-dim); color: var(--purple); }
 
     .lb-score { font-family: var(--mono); font-size: 0.85rem; font-weight: 500; }
-    .score-bar-wrap {
-      width: 80px; height: 4px;
-      background: var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-    }
+    .score-bar-wrap { width: 80px; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
     .score-bar { height: 100%; border-radius: 2px; transition: width 0.6s ease; }
     .lb-date { font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); }
 
-    .lb-state {
-      padding: 2.5rem 1rem;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.88rem;
-    }
+    .lb-state { padding: 2.5rem 1rem; text-align: center; color: var(--text-muted); font-size: 0.88rem; }
     .lb-state .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
 
-    .lb-loading {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 2rem;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-    .spinner {
-      width: 16px; height: 16px;
-      border: 2px solid var(--border);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-    }
+    .lb-loading { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; }
+    .spinner { width: 16px; height: 16px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── Modal & Submission Styles ── */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      padding: 1rem;
-    }
+    /* ── Modal Layout ── */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 1rem; }
     .modal-overlay.visible { display: flex; }
-
-    .modal {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      max-width: 480px;
-      width: 100%;
-      position: relative;
-      animation: modalIn 0.2s ease;
-    }
-    @keyframes modalIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 0.75rem;
-      right: 0.75rem;
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-      line-height: 1;
-      padding: 0.25rem;
-    }
-    .modal__title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
-    .modal__subtitle { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.5rem; }
-    .modal .form-group { margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem; }
-    .modal .form-group label {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-    }
-    .modal .form-group input {
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      color: var(--text);
-      padding: 0.55rem 0.75rem;
-      width: 100%;
-      outline: none;
-    }
-    .modal .form-group input:focus { border-color: var(--accent); }
-    
-    .submit-btn {
-      font-family: var(--font);
-      font-size: 0.88rem;
-      font-weight: 600;
-      background: var(--accent);
-      color: #0e1117;
-      border: none;
-      border-radius: var(--radius);
-      padding: 0.65rem 1.5rem;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-    .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
-
-    .submit-status {
-      display: none;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.83rem;
-      padding: 0.55rem 0.9rem;
-      border-radius: var(--radius);
-      border: 1px solid;
-      margin-top: 1rem;
-    }
-    .submit-status.visible { display: flex; }
-    .submit-status.success { background: var(--green-dim); border-color: rgba(63,185,80,0.3); color: var(--green); }
-    .submit-status.error   { background: var(--red-dim);   border-color: rgba(248,81,73,0.3);  color: var(--red);   }
-    .submit-status.pending { background: var(--accent-dim); border-color: rgba(88,166,255,0.3); color: var(--accent); }
-
-    .modal-project-display {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      background: var(--accent-dim);
-      color: var(--accent);
-      padding: 0.4rem 0.75rem;
-      border-radius: var(--radius);
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
-
-    .extracted-user {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      padding: 0.5rem 0.75rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      min-height: 38px;
-      display: flex;
-      align-items: center;
-    }
-    .extracted-user.valid { border-color: var(--green); color: var(--green); background: var(--green-dim); }
-    .extracted-user.error { border-color: var(--red); color: var(--red); background: var(--red-dim); }
-    .extracted-user .spinner { width: 14px; height: 14px; margin-right: 0.5rem; }
-
-    @media (max-width: 600px) {
-      .header { padding: 2rem 1rem; flex-direction: column; }
-      .submit-btn-header { width: 100%; margin-top: 0.5rem; }
-      .container { padding: 0 1rem 3rem; }
-      .top-tabs { flex-wrap: wrap; }
-      .lb-table th:nth-child(5), .lb-table td:nth-child(5),
-      .lb-table th:nth-child(6), .lb-table td:nth-child(6) { display: none; }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="header">
-    <div class="header__left">
-      <div class="header__badge">// learn by building</div>
-      <h1>Web Project Tasks</h1>
-      <p>Pick a project, follow the checklist, build it from scratch. No frameworks — just HTML, CSS, JavaScript, and a JSON file.</p>
-    </div>
-    <button class="submit-btn-header" id="submit-btn-header">Submit Project</button>
-  </div>
-
-  <div class="container">
-    <div class="top-tabs">
-      <button class="top-tab" data-tab="leaderboard">Leaderboard</button>
-      <button class="top-tab active" data-tab="beginner">Beginner</button>
-      <button class="top-tab disabled">Intermediate <span class="coming-soon">soon</span></button>
-      <button class="top-tab disabled">Advanced <span class="coming-soon">soon</span></button>
-    </div>
-
-    <div class="project-tabs" id="project-tabs">
-      <button class="project-tab active" data-project="portfolio">Student Portfolio</button>
-      <button class="project-tab" data-project="recipe">Recipe Book</button>
-      <button class="project-tab" data-project="quiz">Quiz App</button>
-    </div>
-
-    <div class="level-panel" id="leaderboard-panel">
-      <div class="lb-filters">
-        <button class="lb-filter active" data-filter="all">All Projects</button>
-        <button class="lb-filter" data-filter="portfolio">Portfolio</button>
-        <button class="lb-filter" data-filter="recipe">Recipe Book</button>
-        <button class="lb-filter" data-filter="quiz">Quiz App</button>
-      </div>
-      <div class="lb-table-wrap" id="lb-container">
-        <div class="lb-loading"><div class="spinner"></div> Loading leaderboard...</div>
-      </div>
-    </div>
-
-    <div class="level-panel" id="beginner-panel">
-      <div class="project active" id="portfolio">
-        <div class="project__title">Student Portfolio</div>
-        <div class="project__desc">A personal profile page that loads all content from a JSON file.</div>
-        
-        <div class="section-label">Folder Structure</div>
-        <div class="folder">📁 student-portfolio/<br>&nbsp;&nbsp;├── <span>index.html</span><br>&nbsp;&nbsp;├── <span>style.css</span><br>&nbsp;&nbsp;├── <span>script.js</span><br>&nbsp;&nbsp;└── <span>profile.json</span></div>
-        
-        <div class="section-label">Technical Schema (profile.json)</div>
-        <div class="schema">{
-  <span class="key">"name"</span>: <span class="str">"Your Name"</span>,
-  <span class="key">"role"</span>: <span class="str">"Developer / Designer"</span>,
-  <span class="key">"skills"</span>: [<span class="str">"HTML"</span>, <span class="str">"CSS"</span>, <span class="str">"JavaScript"</span>],
-  <span class="key">"projects"</span>: [
-    {
-      <span class="key">"title"</span>: <span class="str">"Project Name"</span>,
-      <span class="key">"description"</span>: <span class="str">"Brief details..."</span>
-    }
-  ]
-}</div>
-
-        <div class="section-label">Task Checklist</div>
-        <ol class="checklist">
-          <li><span class="num">1</span> Set up the 4 files — index.html, style.css, script.js, profile.json</li>
-          <li><span class="num">2</span> Build the HTML skeleton using semantic tags</li>
-          <li><span class="num">3</span> Fill profile.json with your own profile data</li>
-          <li><span class="num">4</span> Use fetch() in script.js to render your UI sections</li>
-          <li><span class="num">5</span> Style layout with Flexbox and CSS Grid properties</li>
-          <li><span class="num">6</span> Implement clean layout responsive media queries</li>
-          <li><span class="num">7</span> Add client interactive smooth scroll transitions</li>
-          <li><span class="num">8</span> Deploy project repository on GitHub Pages hosting</li>
-        </ol>
-
-        <div class="bonus">
-          <div class="bonus__title">Bonus Challenges</div>
-          <ul>
-            <li>Add a Dark/Light theme toggle switch powered by LocalStorage state.</li>
-            <li>Incorporate tiny hover animations on skill micro-badges.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project" id="recipe">
-        <div class="project__title">Recipe Book</div>
-        <div class="project__desc">A browsable recipe collection filtered by runtime dynamic categories.</div>
-        
-        <div class="section-label">Folder Structure</div>
-        <div class="folder">📁 recipe-book/<br>&nbsp;&nbsp;├── <span>index.html</span><br>&nbsp;&nbsp;├── <span>style.css</span><br>&nbsp;&nbsp;├── <span>script.js</span><br>&nbsp;&nbsp;└── <span>recipes.json</span></div>
-        
-        <div class="section-label">Technical Schema (recipes.json)</div>
-        <div class="schema">[
-  {
-    <span class="key">"id"</span>: <span class="num-val">1</span>,
-    <span class="key">"title"</span>: <span class="str">"Classic Pancakes"</span>,
-    <span class="key">"category"</span>: <span class="str">"Breakfast"</span>,
-    <span class="key">"ingredients"</span>: [<span class="str">"Flour"</span>, <span class="str">"Milk"</span>, <span class="str">"Eggs"</span>],
-    <span class="key">"instructions"</span>: [<span class="str">"Mix ingredients"</span>, <span class="str">"Cook on skillet"</span>]
-  }
-]</div>
-
-        <div class="section-label">Task Checklist</div>
-        <ol class="checklist">
-          <li><span class="num">1</span> Setup codebase context files architecture components</li>
-          <li><span class="num">2</span> Populate dataset items within recipes configuration store</li>
-          <li><span class="num">3</span> Compose control view interfaces tracking user inputs</li>
-          <li><span class="num">4</span> Map collection lists dynamically from database resource</li>
-          <li><span class="num">5</span> Handle application item state categorical sort updates</li>
-          <li><span class="num">6</span> Connect structural global query search input filters</li>
-          <li><span class="num">7</span> Render comprehensive target step details modal layers</li>
-          <li><span class="num">8</span> Standardize fully adapted desktop and viewport views</li>
-        </ol>
-
-        <div class="bonus">
-          <div class="bonus__title">Bonus Challenges</div>
-          <ul>
-            <li>Build a working "Favorites" shelf using localStorage arrays.</li>
-            <li>Add a dynamic "Servings Scaler" that changes ingredient quantities instantly.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project" id="quiz">
-        <div class="project__title">Quiz App</div>
-        <div class="project__desc">An interactive trivia game mapping response validations from JSON records.</div>
-        
-        <div class="section-label">Folder Structure</div>
-        <div class="folder">📁 quiz-app/<br>&nbsp;&nbsp;├── <span>index.html</span><br>&nbsp;&nbsp;├── <span>style.css</span><br>&nbsp;&nbsp;├── <span>script.js</span><br>&nbsp;&nbsp;└── <span>questions.json</span></div>
-        
-        <div class="section-label">Technical Schema (questions.json)</div>
-        <div class="schema">[
-  {
-    <span class="key">"question"</span>: <span class="str">"What does CSS stand for?"</span>,
-    <span class="key">"options"</span>: [
-      <span class="str">"Creative Style Sheets"</span>,
-      <span class="str">"Cascading Style Sheets"</span>,
-      <span class="str">"Computer Style Sheets"</span>
-    ],
-    <span class="key">"correct"</span>: <span class="num-val">1</span> <span class="comment">// Index matching correct array choice</span>
-  }
-]</div>
-
-        <div class="section-label">Task Checklist</div>
-        <ol class="checklist">
-          <li><span class="num">1</span> Build initial boilerplate document mapping definitions</li>
-          <li><span class="num">2</span> Setup comprehensive objective problem arrays layout</li>
-          <li><span class="num">3</span> Design initial setup screens alongside display cards</li>
-          <li><span class="num">4</span> Stream single collection item dynamically per iteration</li>
-          <li><span class="num">5</span> Validate user select matching index configurations</li>
-          <li><span class="num">6</span> Keep session score totals and progression status bars</li>
-          <li><span class="num">7</span> Display performance percentage aggregates screens metrics</li>
-          <li><span class="num">8</span> Polish feedback color triggers and fade transitions</li>
-        </ol>
-
-        <div class="bonus">
-          <div class="bonus__title">Bonus Challenges</div>
-          <ul>
-            <li>Incorporate a responsive 15-second visual countdown timer per problem card.</li>
-            <li>Generate a final breakdown log reviewing incorrect selections at summary completion.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="tips">
-      <div class="tips__title">General Tips</div>
-      <ul>
-        <li>Use browser DevTools (F12 or right-click → Inspect) to monitor Console warnings and troubleshoot dynamic script fetch issues.</li>
-        <li>Validate that your JSON file structure matches the technical schemas exactly (ensure commas and quote formats are precise).</li>
-        <li>Commit your workflow changes into your GitHub repository milestones cleanly before firing your production build pages validation logic.</li>
-      </ul>
-    </div>
-
-    <div class="coming-soon-panel" id="intermediate-panel">
-      <span class="icon">🚧</span>
-      <h3>Intermediate Projects Coming Soon</h3>
-    </div>
-    <div class="coming-soon-panel" id="advanced-panel">
-      <span class="icon">🚧</span>
-      <h3>Advanced Projects Coming Soon</h3>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="modal-overlay">
-    <div class="modal">
-      <button class="modal-close" id="modal-close">×</button>
-      <div class="modal__title">Submit Your Project</div>
-      <div class="modal__subtitle">Submit your GitHub repository link to populate leaderboard ranks.</div>
-      <div class="modal-project-display" id="modal-project-display">Student Portfolio</div>
-      <div class="form-group">
-        <label for="input-repo">GitHub Repo URL</label>
-        <input type="url" id="input-repo" placeholder="https://github.com/username/repo-name" autocomplete="off" spellcheck="false" />
-      </div>
-      <div class="form-group">
-        <div class="extracted-user" id="extracted-user"></div>
-      </div>
-      <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
-        <button class="submit-btn" id="modal-submit-btn" disabled>Submit for Validation</button>
-        <div class="submit-status" id="modal-submit-status"></div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // ── Global Server Secrets & Constants ──
-    const SUPABASE_URL  = 'https://bjfbfhnbdgtkqnqtrkrl.supabase.co';
-    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqZmJmaG5iZGd0a3FucXRya3JsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4MTAxOTUsImV4cCI6MjA5MTM4NjE5NX0.ppxNxpgUlSJJKcMjRuSlJ0L7nBtFonOZILjIbkngXJo';
-    const SUBMIT_URL      = `${SUPABASE_URL}/functions/v1/submit`;
-    const LEADERBOARD_URL = `${SUPABASE_URL}/rest/v1/leaderboard_view?order=total_score.desc,validated_at.asc&limit=50`;
-
-    const projectNames = { portfolio: 'Student Portfolio', recipe: 'Recipe Book', quiz: 'Quiz App' };
-
-    // ── Core Layout UI Controls ──
-    const topTabs = document.querySelectorAll('.top-tab');
-    const projectTabsContainer = document.getElementById('project-tabs');
-    const submitBtnHeader = document.getElementById('submit-btn-header');
-    const leaderboardPanel = document.getElementById('leaderboard-panel');
-    const beginnerPanel = document.getElementById('beginner-panel');
-    const intermediatePanel = document.getElementById('intermediate-panel');
-    const advancedPanel = document.getElementById('advanced-panel');
-
-    function updateTopTab(activeTab) {
-      topTabs.forEach(tab => { if (!tab.classList.contains('disabled')) tab.classList.toggle('active', tab === activeTab); });
-      const tabName = activeTab.dataset.tab;
-
-      [leaderboardPanel, beginnerPanel, intermediatePanel, advancedPanel].forEach(p => p.classList.remove('active'));
-
-      if (tabName === 'leaderboard') {
-        leaderboardPanel.classList.add('active');
-        projectTabsContainer.classList.add('hidden');
-        submitBtnHeader.classList.add('hidden');
-        fetchLeaderboard();
-      } else {
-        projectTabsContainer.classList.toggle('hidden', tabName !== 'beginner');
-        submitBtnHeader.classList.toggle('hidden', tabName !== 'beginner');
-        if (tabName === 'beginner') beginnerPanel.classList.add('active');
-        if (tabName === 'intermediate') intermediatePanel.classList.add('active');
-        if (tabName === 'advanced') advancedPanel.classList.add('active');
-      }
-    }
-
-    topTabs.forEach(tab => { if (!tab.classList.contains('disabled')) tab.addEventListener('click', () => updateTopTab(tab)); });
-
-    const projectTabs = document.querySelectorAll('.project-tab');
-    const projects = document.querySelectorAll('#beginner-panel .project');
-
-    function updateProjectTab(activeTab) {
-      projectTabs.forEach(tab => tab.classList.toggle('active', tab === activeTab));
-      projects.forEach(p => p.classList.toggle('active', p.id === activeTab.dataset.project));
-    }
-    projectTabs.forEach(tab => tab.addEventListener('click', () => updateProjectTab(tab)));
-
-    // ── Dialog Controllers & Input Handling ──
-    const modalOverlay = document.getElementById('modal-overlay');
-    const modalClose = document.getElementById('modal-close');
-    const modalSubmitBtn = document.getElementById('modal-submit-btn');
-    const modalSubmitStatus = document.getElementById('modal-submit-status');
-    const modalProjectDisplay = document.getElementById('modal-project-display');
-    const inputRepo = document.getElementById('input-repo');
-    const extractedUserEl = document.getElementById('extracted-user');
-
-    let extractedUsername = null;
-    let targetRepository = null;
-    let validationController = null;
-
-    function showExtractedUser(state, message) {
-      extractedUserEl.className = 'extracted-user';
-      if (state === 'loading') {
-        extractedUserEl.className = 'extracted-user loading';
-        extractedUserEl.innerHTML = `<div class="spinner"></div> Validating repository...`;
-      } else if (state === 'valid') {
-        extractedUserEl.className = 'extracted-user valid';
-        extractedUserEl.textContent = `✓ ${message}`;
-      } else if (state === 'error') {
-        extractedUserEl.className = 'extracted-user error';
-        extractedUserEl.textContent = `✗ ${message}`;
-      } else {
-        extractedUserEl.textContent = '';
-      }
-    }
-
-    function parseGithubUrl(url) {
-      try {
-        let clean = url.trim().replace(/\/$/, "").replace(/\.git$/, "");
-        if (!/^https?:\/\//i.test(clean)) {
-          clean = 'https://' + clean;
-        }
-        const parsedUrl = new URL(clean);
-        if (!/^(www\.)?github\.com$/i.test(parsedUrl.hostname)) return null;
-
-        const paths = parsedUrl.pathname.split('/').filter(p => p);
-        if (paths.length < 2) return null;
-
-        return { owner: paths[0], repo: paths[1] };
-      } catch {
-        return null;
-      }
-    }
-
-    async function validateRepo(url) {
-      const parsed = parseGithubUrl(url);
-      if (!parsed) {
-        showExtractedUser('error', 'Invalid GitHub URL format');
-        extractedUsername = null;
-        targetRepository = null;
-        modalSubmitBtn.disabled = true;
-        return;
-      }
-
-      if (validationController) validationController.abort();
-      validationController = new AbortController();
-
-      showExtractedUser('loading', '');
-      modalSubmitBtn.disabled = true;
-
-      try {
-        const response = await fetch(`https://api.github.com/repos/${parsed.owner}/${parsed.repo}`, {
-          headers: { 'Accept': 'application/vnd.github.v3+json' },
-          signal: validationController.signal
-        });
-
-        if (response.status === 404) {
-          showExtractedUser('error', 'Repository not found or is private');
-        } else if (response.status === 403) {
-          showExtractedUser('error', 'Rate limit exceeded. Please click verify again shortly.');
-        } else if (!response.ok) {
-          showExtractedUser('error', 'Validation error encountered.');
-        } else {
-          const data = await response.json();
-          if (data.owner?.type === 'Organization') {
-            showExtractedUser('error', 'Organizations entries are restricted.');
-          } else {
-            extractedUsername = data.owner.login;
-            targetRepository = data.name;
-            showExtractedUser('valid', `Detected account link: ${extractedUsername}/${targetRepository}`);
-            modalSubmitBtn.disabled = false;
-          }
-        }
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          showExtractedUser('error', 'Validation failed due to network errors.');
-        }
-      }
-    }
-
-    let searchThrottle;
-    inputRepo.addEventListener('input', () => {
-      clearTimeout(searchThrottle);
-      extractedUsername = null;
-      modalSubmitBtn.disabled = true;
-      showExtractedUser('', '');
-      
-      const val = inputRepo.value.trim();
-      if (val) {
-        searchThrottle = setTimeout(() => validateRepo(val), 600);
-      }
-    });
-
-    submitBtnHeader.addEventListener('click', () => {
-      const activeTab = document.querySelector('.project-tab.active');
-      if (activeTab) {
-        modalProjectDisplay.textContent = projectNames[activeTab.dataset.project] || 'Unknown';
-        modalProjectDisplay.dataset.project = activeTab.dataset.project;
-      }
-      modalOverlay.classList.add('visible');
-      modalSubmitStatus.className = 'submit-status';
-      inputRepo.value = '';
-      showExtractedUser('', '');
-      modalSubmitBtn.disabled = true;
-    });
-
-    const dropModal = () => { modalOverlay.classList.remove('visible'); if(validationController) validationController.abort(); };
-    modalClose.addEventListener('click', dropModal);
-    modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) dropModal(); });
-
-    modalSubmitBtn.addEventListener('click', async () => {
-      if (!extractedUsername || !inputRepo.value.trim()) return;
-
-      modalSubmitBtn.disabled = true;
-      modalSubmitStatus.className = 'submit-status visible pending';
-      modalSubmitStatus.textContent = '⏳ Processing pipeline submission...';
-
-      try {
-        const res = await fetch(SUBMIT_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            github_username: extractedUsername,
-            repo_url: inputRepo.value.trim(),
-            project_type: modalProjectDisplay.dataset.project
-          }),
-        });
-
-        const data = await res.json();
-        if (res.ok && data.success) {
-          modalSubmitStatus.className = 'submit-status visible success';
-          modalSubmitStatus.textContent = '✓ Verification initialized! Ranks load within 60 seconds.';
-          setTimeout(dropModal, 2000);
-        } else {
-          modalSubmitStatus.className = 'submit-status visible error';
-          modalSubmitStatus.textContent = `✗ ${data.error || 'Submission rejection encountered.'}`;
-          modalSubmitBtn.disabled = false;
-        }
-      } catch {
-        modalSubmitStatus.className = 'submit-status visible error';
-        modalSubmitStatus.textContent = '✗ API routing endpoint failure.';
-        modalSubmitBtn.disabled = false;
-      }
-    });
-
-    // ── Leaderboard Data Aggregator ──
-    let allEntries = [];
-    let activeFilter = 'all';
-
-    function escapeHtml(str) {
-      if (!str) return '';
-      const out = document.createElement('div');
-      out.textContent = String(str);
-      return out.innerHTML;
-    }
-
-    function renderTable(entries) {
-      const container = document.getElementById('lb-container');
-      if (!entries.length) {
-        container.innerHTML = `<div class="lb-state"><div class="icon">🏁</div>No submissions recorded for this section yet!</div>`;
-        return;
-      }
-
-      if (activeFilter === 'all') {
-        const rows = entries.map((e, idx) => {
-          const scores = typeof e.project_scores === 'string' ? JSON.parse(e.project_scores) : (e.project_scores || {});
-          const badges = Object.entries(scores).map(([p, s]) => `<span class="lb-project ${p}">${p.charAt(0).toUpperCase() + p.slice(1)}: ${s}</span>`).join('');
-          const pct = Math.min(100, Math.round((e.total_score / 345) * 100));
-          const lbl = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `#${idx + 1}`;
-          const cls = idx < 3 ? `rank-${idx + 1}` : 'rank-other';
-
-          return `<tr>
-            <td><span class="rank-badge ${cls}">${lbl}</span></td>
-            <td><span class="lb-username">${escapeHtml(e.masked_username)}</span></td>
-            <td>${badges}</td>
-            <td><span class="lb-score">${e.total_score}</span></td>
-            <td><div class="score-bar-wrap"><div class="score-bar" style="width:${pct}%; background:var(--accent)"></div></div></td>
-            <td><span class="lb-date">${new Date(e.validated_at).toLocaleDateString('en-GB')}</span></td>
-          </tr>`;
-        }).join('');
-
-        container.innerHTML = `<table class="lb-table">
-          <thead><tr><th>Rank</th><th>User</th><th>Active Projects</th><th>Total Score</th><th>Progress</th><th>Date</th></tr></thead>
-          <tbody>${rows}</tbody></table>`;
-      } else {
-        const rows = entries.map((e, idx) => {
-          const scores = typeof e.project_scores === 'string' ? JSON.parse(e.project_scores) : (e.project_scores || {});
-          const currentScore = scores[activeFilter] || 0;
-          const pct = Math.min(100, Math.round((currentScore / 115) * 100));
-          const lbl = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `#${idx + 1}`;
-          const cls = idx < 3 ? `rank-${idx + 1}` : 'rank-other';
-
-          return `<tr>
-            <td><span class="rank-badge ${cls}">${lbl}</span></td>
-            <td><span class="lb-username">${escapeHtml(e.masked_username)}</span></td>
-            <td><span class="lb-project ${activeFilter}">${activeFilter}</span></td>
-            <td><span class="lb-score">${currentScore}</span></td>
-            <td><div class="score-bar-wrap"><div class="score-bar" style="width:${pct}%; background:var(--accent)"></div></div></td>
-            <td><span class="lb-date">${new Date(e.validated_at).toLocaleDateString('en-GB')}</span></td>
-          </tr>`;
-        }).join('');
-
-        container.innerHTML = `<table class="lb-table">
-          <thead><tr><th>Rank</th><th>User</th><th>Project Scope</th><th>Score</th><th>Progress</th><th>Date</th></tr></thead>
-          <tbody>${rows}</tbody></table>`;
-      }
-    }
-
-    function applyFilter() {
-      if (activeFilter === 'all') {
-        renderTable(allEntries);
-      } else {
-        const filtered = allEntries.filter(e => {
-          const scores = typeof e.project_scores === 'string' ? JSON.parse(e.project_scores) : (e.project_scores || {});
-          return scores[activeFilter] > 0;
-        });
-        renderTable(filtered);
-      }
-    }
-
-    async function fetchLeaderboard() {
-      const container = document.getElementById('lb-container');
-      container.innerHTML = `<div class="lb-loading"><div class="spinner"></div> Synchronizing records...</div>`;
-      try {
-        const res = await fetch(LEADERBOARD_URL, {
-          headers: { 'apikey': SUPABASE_ANON, 'Authorization': `Bearer ${SUPABASE_ANON}` }
-        });
-        if (!res.ok) throw new Error();
-        allEntries = await res.json();
-        applyFilter();
-      } catch {
-        container.innerHTML = `<div class="lb-state">⚠️ Connection out-of-sync. <button onclick="fetchLeaderboard()" style="color:var(--accent);background:none;border:none;cursor:pointer;text-decoration:underline;">Retry Sync</button></div>`;
-      }
-    }
-
-    document.querySelectorAll('.lb-filter').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.lb-filter').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeFilter = btn.dataset.filter;
-        applyFilter();
-      });
-    });
-
-    // Bootstrapping Setup
-    updateTopTab(document.querySelector('.top-tab[data-tab="beginner"]'));
-    updateProjectTab(document.querySelector('.project-tab[data-project="portfolio"]'));
-  </script>
-</body>
-</html>
+    .modal { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; max-width: 480px; width: 100%; position: relative; animation: modalIn 0.2s ease; }
+    @keyframes modalIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    .modal-close { position: absolute; top: 0.75rem; right: 0.75rem; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; line-height: 1; padding: 0.25rem; }
+    .modal__title { font-size: 1
