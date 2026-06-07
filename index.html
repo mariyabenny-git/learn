@@ -39,7 +39,6 @@
       min-height: 100vh;
     }
 
-    /* ── Header ── */
     .header {
       display: flex;
       flex-wrap: wrap;
@@ -50,7 +49,6 @@
       border-bottom: 1px solid var(--border);
       background: linear-gradient(180deg, rgba(88,166,255,0.04) 0%, transparent 100%);
     }
-    .header__left { text-align: left; }
     .header__badge {
       display: inline-block;
       font-family: var(--mono);
@@ -90,20 +88,9 @@
     .submit-btn-header:active { transform: scale(0.98); }
     .submit-btn-header.hidden { display: none; }
 
-    /* ── Container ── */
-    .container {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 0 1.5rem 4rem;
-    }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 1.5rem 4rem; }
 
-    /* ── Top Tabs ── */
-    .top-tabs {
-      display: flex;
-      gap: 0.25rem;
-      padding: 2rem 0 0;
-      margin-bottom: 0;
-    }
+    .top-tabs { display: flex; gap: 0.25rem; padding: 2rem 0 0; }
     .top-tab {
       font-family: var(--font);
       font-size: 0.85rem;
@@ -114,431 +101,114 @@
       background: transparent;
       color: var(--text-muted);
       cursor: pointer;
-      transition: all 0.2s;
       border-bottom: none;
       position: relative;
     }
-    .top-tab.active {
-      background: var(--surface);
-      color: var(--green);
-      border-color: var(--border);
-    }
+    .top-tab.active { background: var(--surface); color: var(--green); }
     .top-tab.active::after {
-      content: '';
-      position: absolute;
-      bottom: -1px; left: 0; right: 0;
-      height: 1px;
-      background: var(--surface);
+      content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 1px; background: var(--surface);
     }
     .top-tab.disabled { opacity: 0.35; cursor: not-allowed; }
     .top-tab .coming-soon {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      background: var(--yellow-dim);
-      color: var(--yellow);
-      padding: 0.1rem 0.4rem;
-      border-radius: 3px;
-      margin-left: 0.4rem;
-      vertical-align: middle;
+      font-family: var(--mono); font-size: 0.6rem; background: var(--yellow-dim); color: var(--yellow);
+      padding: 0.1rem 0.4rem; border-radius: 3px; margin-left: 0.4rem;
     }
 
-    /* ── Project Tabs ── */
-    .project-tabs {
-      display: flex;
-      gap: 0.5rem;
-      padding: 1rem 0 0;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
+    .project-tabs { display: flex; gap: 0.5rem; padding: 1rem 0 0; margin-bottom: 1.5rem; flex-wrap: wrap; }
     .project-tabs.hidden { display: none; }
     .project-tab {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      padding: 0.4rem 1rem;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: transparent;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.2s;
+      font-family: var(--mono); font-size: 0.8rem; padding: 0.4rem 1rem;
+      border: 1px solid var(--border); border-radius: 20px; background: transparent; color: var(--text-muted); cursor: pointer;
     }
-    .project-tab:hover { border-color: var(--accent); color: var(--text); }
-    .project-tab.active {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+    .project-tab.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
 
-    /* ── Level Content Panel ── */
-    .level-panel {
-      border: 1px solid var(--border);
-      border-radius: 0 var(--radius) var(--radius) var(--radius);
-      background: var(--surface);
-      padding: 1.5rem;
-      display: none;
-    }
+    .level-panel { border: 1px solid var(--border); border-radius: 0 var(--radius) var(--radius) var(--radius); background: var(--surface); padding: 1.5rem; display: none; }
     .level-panel.active { display: block; }
 
-    .coming-soon-panel {
-      display: none;
-      border: 1px solid var(--border);
-      border-radius: 0 var(--radius) var(--radius) var(--radius);
-      background: var(--surface);
-      padding: 3rem 1.5rem;
-      text-align: center;
-    }
+    .coming-soon-panel { display: none; border: 1px solid var(--border); border-radius: 0 var(--radius) var(--radius) var(--radius); background: var(--surface); padding: 3rem 1.5rem; text-align: center; }
     .coming-soon-panel.active { display: block; }
     .coming-soon-panel .icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
-    .coming-soon-panel h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text); }
-    .coming-soon-panel p { color: var(--text-muted); font-size: 0.9rem; }
 
     .project { display: none; }
     .project.active { display: block; }
-
     .project__title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.25rem; }
     .project__desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
 
-    .section-label {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 0.6rem;
-    }
-
-    .folder {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.5rem;
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
+    .section-label { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.6rem; }
+    .folder { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-family: var(--mono); font-size: 0.82rem; color: var(--text-muted); line-height: 1.8; }
     .folder span { color: var(--text); }
 
-    .schema {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.5rem;
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      line-height: 1.7;
-      overflow-x: auto;
-      white-space: pre;
-      color: var(--text-muted);
-    }
+    .schema { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-family: var(--mono); font-size: 0.78rem; overflow-x: auto; white-space: pre; color: var(--text-muted); }
     .schema .key { color: var(--accent); }
     .schema .str { color: var(--green); }
     .schema .comment { color: #545d68; font-style: italic; }
 
     .checklist { list-style: none; margin-bottom: 1.5rem; }
-    .checklist li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      padding: 0.5rem 0;
-      font-size: 0.88rem;
-      border-bottom: 1px solid rgba(42, 49, 59, 0.5);
-    }
-    .checklist li:last-child { border-bottom: none; }
-    .checklist .num {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--accent);
-      background: var(--accent-dim);
-      min-width: 22px;
-      height: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
+    .checklist li { display: flex; align-items: flex-start; gap: 0.6rem; padding: 0.5rem 0; font-size: 0.88rem; border-bottom: 1px solid rgba(42, 49, 59, 0.5); }
+    .checklist .num { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); background: var(--accent-dim); min-width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-top: 2px; flex-shrink: 0; }
 
-    .bonus {
-      background: var(--purple-dim);
-      border: 1px solid rgba(188, 140, 255, 0.2);
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-    }
-    .bonus__title {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--purple);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 0.5rem;
-    }
-    .bonus ul { list-style: none; font-size: 0.85rem; }
-    .bonus li { padding: 0.2rem 0; color: var(--text-muted); }
+    .bonus { background: var(--purple-dim); border: 1px solid rgba(188, 140, 255, 0.2); border-radius: var(--radius); padding: 1rem 1.25rem; }
+    .bonus__title { font-family: var(--mono); font-size: 0.7rem; color: var(--purple); text-transform: uppercase; margin-bottom: 0.5rem; }
     .bonus li::before { content: '★ '; color: var(--purple); }
+    .bonus ul { list-style: none; font-size: 0.85rem; }
 
-    .tips {
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-    .tips__title {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--yellow);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 0.75rem;
-    }
+    .tips { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+    .tips__title { font-family: var(--mono); font-size: 0.7rem; color: var(--yellow); text-transform: uppercase; margin-bottom: 0.75rem; }
     .tips ul { list-style: none; font-size: 0.85rem; color: var(--text-muted); }
-    .tips li { padding: 0.3rem 0; }
     .tips li::before { content: '→ '; color: var(--yellow); }
 
-    /* ── Leaderboard Styles ── */
-    .lb-filters {
-      display: flex;
-      gap: 0.4rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-    .lb-filter {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      padding: 0.3rem 0.8rem;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: transparent;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .lb-filter:hover { border-color: var(--accent); color: var(--text); }
-    .lb-filter.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
-
-    .lb-table-wrap {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow-hidden;
-    }
-
-    .lb-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-    .lb-table thead tr { border-bottom: 1px solid var(--border); background: var(--bg); }
-    .lb-table th {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      padding: 0.65rem 1rem;
-      text-align: left;
-    }
-    .lb-table td {
-      padding: 0.7rem 1rem;
-      border-bottom: 1px solid rgba(42, 49, 59, 0.5);
-      vertical-align: middle;
-    }
-    .lb-table tbody tr:last-child td { border-bottom: none; }
-    .lb-table tbody tr:hover { background: var(--surface-hover); }
-
-    .rank-badge {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 500;
-      min-width: 26px;
-      height: 26px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-    }
-    .rank-1 { background: rgba(210,153,34,0.2); color: #d29922; }
-    .rank-2 { background: rgba(139,148,158,0.2); color: #8b949e; }
-    .rank-3 { background: rgba(174,124,90,0.2); color: #ae7c5a; }
-    .rank-other { background: var(--accent-dim); color: var(--accent); }
-
-    .lb-username { font-family: var(--mono); font-size: 0.8rem; color: var(--text); }
-
-    .lb-project {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      padding: 0.15rem 0.5rem;
-      border-radius: 20px;
-      text-transform: capitalize;
-      margin-right: 0.25rem;
-      display: inline-block;
-    }
-    .lb-project.portfolio { background: var(--accent-dim); color: var(--accent); }
-    .lb-project.recipe    { background: var(--green-dim);  color: var(--green);  }
-    .lb-project.quiz      { background: var(--purple-dim); color: var(--purple); }
-
-    .lb-score { font-family: var(--mono); font-size: 0.85rem; font-weight: 500; }
-
-    .score-bar-wrap {
-      width: 80px; height: 4px;
-      background: var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .score-bar { height: 100%; border-radius: 2px; transition: width 0.6s ease; }
-
-    .lb-date { font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); }
-
-    .lb-state {
-      padding: 2.5rem 1rem;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.88rem;
-    }
-    .lb-state .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
-
-    .lb-loading {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 2rem;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-    .spinner {
-      width: 16px; height: 16px;
-      border: 2px solid var(--border);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ── Modal Styles ── */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      padding: 1rem;
-    }
-    .modal-overlay.visible { display: flex; }
-
-    .modal {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      max-width: 480px;
-      width: 100%;
-      position: relative;
-      animation: modalIn 0.2s ease;
-    }
-    @keyframes modalIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 0.75rem;
-      right: 0.75rem;
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-      line-height: 1;
-      padding: 0.25rem;
-      transition: color 0.2s;
-    }
-    .modal-close:hover { color: var(--text); }
-
-    .modal__title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
-    .modal__subtitle { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.5rem; }
-
-    .modal .form-group { margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem; }
-    .modal .form-group label {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-    }
-    .modal .form-group input {
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      color: var(--text);
-      padding: 0.55rem 0.75rem;
-      width: 100%;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .modal .form-group input:focus { border-color: var(--accent); }
-    .modal .form-group input::placeholder { color: #3d4654; }
-
-    .extracted-user {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      padding: 0.5rem 0.75rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      min-height: 38px;
-      display: flex;
-      align-items: center;
-    }
-    .extracted-user.valid { border-color: var(--green); color: var(--green); background: var(--green-dim); }
-    .extracted-user.error { border-color: var(--red); color: var(--red); background: var(--red-dim); }
-    .extracted-user .spinner { width: 14px; height: 14px; border-width: 2px; margin-right: 0.5rem; }
-
-    .submit-status {
-      display: none;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.83rem;
-      padding: 0.55rem 0.9rem;
-      border-radius: var(--radius);
-      border: 1px solid;
-      margin-top: 1rem;
-    }
+    .submit-status { display: none; align-items: center; gap: 0.6rem; font-size: 0.83rem; padding: 0.55rem 0.9rem; border-radius: var(--radius); border: 1px solid; margin-top: 1rem; }
     .submit-status.visible { display: flex; }
     .submit-status.success { background: var(--green-dim); border-color: rgba(63,185,80,0.3); color: var(--green); }
     .submit-status.error   { background: var(--red-dim);   border-color: rgba(248,81,73,0.3);  color: var(--red);   }
     .submit-status.pending { background: var(--accent-dim); border-color: rgba(88,166,255,0.3); color: var(--accent); }
 
-    .modal-project-display {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      background: var(--accent-dim);
-      color: var(--accent);
-      padding: 0.4rem 0.75rem;
-      border-radius: var(--radius);
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
+    .leaderboard-section__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem; }
+    .lb-filters { display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .lb-filter { font-family: var(--mono); font-size: 0.72rem; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: transparent; color: var(--text-muted); cursor: pointer; }
+    .lb-filter.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+    .lb-table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .lb-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .lb-table thead tr { border-bottom: 1px solid var(--border); background: var(--bg); }
+    .lb-table th { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; padding: 0.65rem 1rem; text-align: left; }
+    .lb-table td { padding: 0.7rem 1rem; border-bottom: 1px solid rgba(42, 49, 59, 0.5); }
+    .rank-badge { font-family: var(--mono); font-size: 0.72rem; min-width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; }
+    .rank-1 { background: rgba(210,153,34,0.2); color: #d29922; }
+    .rank-2 { background: rgba(139,148,158,0.2); color: #8b949e; }
+    .rank-3 { background: rgba(174,124,90,0.2); color: #ae7c5a; }
+    .rank-other { background: var(--accent-dim); color: var(--accent); }
+    .lb-username { font-family: var(--mono); color: var(--text); }
+    .lb-project { font-family: var(--mono); font-size: 0.68rem; padding: 0.15rem 0.5rem; border-radius: 20px; text-transform: capitalize; }
+    .lb-project.portfolio { background: var(--accent-dim); color: var(--accent); }
+    .lb-project.recipe    { background: var(--green-dim);  color: var(--green);  }
+    .lb-project.quiz      { background: var(--purple-dim); color: var(--purple); }
+    .score-bar-wrap { width: 80px; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+    .score-bar { height: 100%; border-radius: 2px; }
+    .lb-date { font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); }
+    .lb-loading { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 2rem; color: var(--text-muted); }
+    .spinner { width: 16px; height: 16px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── Responsive ── */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 1rem; }
+    .modal-overlay.visible { display: flex; }
+    .modal { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; max-width: 480px; width: 100%; position: relative; }
+    .modal-close { position: absolute; top: 0.75rem; right: 0.75rem; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .modal__title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .modal__subtitle { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.5rem; }
+    .modal .form-group { margin-bottom: 1rem; }
+    .modal .form-group label { display: block; font-family: var(--mono); font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.35rem; }
+    .modal .form-group input { font-family: var(--mono); font-size: 0.82rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); padding: 0.55rem 0.75rem; width: 100%; outline: none; }
+    .modal .submit-btn { font-family: var(--font); font-size: 0.88rem; font-weight: 600; background: var(--accent); color: #0e1117; border: none; border-radius: var(--radius); padding: 0.65rem 1.5rem; cursor: pointer; }
+    .modal .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .modal-project-display { font-family: var(--mono); font-size: 0.8rem; background: var(--accent-dim); color: var(--accent); padding: 0.4rem 0.75rem; border-radius: var(--radius); display: inline-block; margin-bottom: 1rem; }
+    .extracted-user { font-family: var(--mono); font-size: 0.8rem; color: var(--text-muted); padding: 0.5rem 0.75rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); min-height: 38px; display: flex; align-items: center; }
+    .extracted-user.valid { border-color: var(--green); color: var(--green); background: var(--green-dim); }
+    .extracted-user.error { border-color: var(--red); color: var(--red); background: var(--red-dim); }
+
     @media (max-width: 600px) {
-      .header { padding: 2rem 1rem; flex-direction: column; align-items: flex-start; }
-      .header__left { width: 100%; }
+      .header { padding: 2rem 1rem; flex-direction: column; }
       .submit-btn-header { width: 100%; margin-top: 0.5rem; }
-      .container { padding: 0 1rem 3rem; }
-      .level-panel, .coming-soon-panel { padding: 1rem; }
-      .top-tabs { flex-wrap: wrap; gap: 0.25rem; }
-      .top-tab { font-size: 0.75rem; padding: 0.4rem 0.75rem; }
-      .project-tabs { gap: 0.35rem; }
-      .project-tab { font-size: 0.72rem; padding: 0.35rem 0.75rem; }
-      .lb-table th:nth-child(5), .lb-table td:nth-child(5),
-      .lb-table th:nth-child(6), .lb-table td:nth-child(6) { display: none; }
+      .lb-table th:nth-child(5), .lb-table td:nth-child(5), .lb-table th:nth-child(6), .lb-table td:nth-child(6) { display: none; }
     }
   </style>
 </head>
@@ -579,7 +249,7 @@
       </div>
     </div>
 
-    <div class="level-panel active" id="beginner-panel">
+    <div class="level-panel" id="beginner-panel">
       <div class="project active" id="portfolio">
         <div class="project__title">Student Portfolio</div>
         <div class="project__desc">A personal profile page that loads all content from a JSON file. Change the JSON, the page updates.</div>
@@ -706,7 +376,7 @@
         <span class="str">"How To Make Lasagna"</span>,
         <span class="str">"Hyperlinks Text Mark Language"</span>
       ],
-      <span class="key">"correctAnswer"</span>: <span class="str">0</span>,  <span class="comment">// index of correct option</span>
+      <span class="key">"correctAnswer"</span>: <span class="str">0</span>,
       <span class="key">"explanation"</span>: <span class="str">"HTML = Hyper Text Markup Language"</span>
     }
   ]
@@ -736,24 +406,16 @@
     <div class="tips">
       <div class="tips__title">General Tips</div>
       <ul>
-        <li>Use browser DevTools (F12) — inspect elements, check console for errors, test responsiveness</li>
+        <li>Use browser DevTools (F12) — inspect elements, check console for errors</li>
         <li>Commit to git after every checklist item — build the habit early</li>
-        <li>Don't copy-paste code blindly — type it out, understand what each line does</li>
         <li>Deploy on GitHub Pages — a live link is worth more than code on your laptop</li>
-        <li>When stuck, read MDN Web Docs — it's the best reference for HTML, CSS, and JS</li>
       </ul>
     </div>
-
     <div class="coming-soon-panel" id="intermediate-panel">
-      <span class="icon">🚧</span>
-      <h3>Intermediate Projects Coming Soon</h3>
-      <p>We're cooking up more challenging projects. Check back soon!</p>
+      <span class="icon">🚧</span><h3>Intermediate Projects Coming Soon</h3>
     </div>
-
     <div class="coming-soon-panel" id="advanced-panel">
-      <span class="icon">🚧</span>
-      <h3>Advanced Projects Coming Soon</h3>
-      <p>These will push your skills to the next level. Stay tuned!</p>
+      <span class="icon">🚧</span><h3>Advanced Projects Coming Soon</h3>
     </div>
   </div>
 
@@ -763,16 +425,13 @@
       <div class="modal__title">Submit Your Project</div>
       <div class="modal__subtitle">Built something? Submit your GitHub repo. We'll validate it and put you on the leaderboard.</div>
       <div class="modal-project-display" id="modal-project-display">Student Portfolio</div>
-      
       <div class="form-group">
         <label for="input-repo">GitHub Repo URL</label>
         <input type="url" id="input-repo" placeholder="https://github.com/username/repo-name" autocomplete="off" spellcheck="false" />
       </div>
-      
       <div class="form-group">
         <div class="extracted-user" id="extracted-user"></div>
       </div>
-      
       <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
         <button class="submit-btn" id="modal-submit-btn" disabled>Submit for Validation</button>
         <div class="submit-status" id="modal-submit-status"></div>
@@ -781,19 +440,13 @@
   </div>
 
   <script>
-    // ── Configuration ──
     const SUPABASE_URL  = 'https://bjfbfhnbdgtkqnqtrkrl.supabase.co';
     const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqZmJmaG5iZGd0a3FucXRya3JsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4MTAxOTUsImV4cCI6MjA5MTM4NjE5NX0.ppxNxpgUlSJJKcMjRuSlJ0L7nBtFonOZILjIbkngXJo';
     const SUBMIT_URL      = `${SUPABASE_URL}/functions/v1/submit`;
     const LEADERBOARD_URL = `${SUPABASE_URL}/rest/v1/leaderboard_view?order=total_score.desc,validated_at.asc&limit=50`;
 
     const projectNames = { portfolio: 'Student Portfolio', recipe: 'Recipe Book', quiz: 'Quiz App' };
-    let allEntries = [];
-    let activeFilter = 'all';
-    let extractedUsername = null;
-    let validateTimeout;
 
-    // DOM Nodes
     const topTabs = document.querySelectorAll('.top-tab');
     const projectTabsContainer = document.getElementById('project-tabs');
     const submitBtnHeader = document.getElementById('submit-btn-header');
@@ -801,18 +454,7 @@
     const beginnerPanel = document.getElementById('beginner-panel');
     const intermediatePanel = document.getElementById('intermediate-panel');
     const advancedPanel = document.getElementById('advanced-panel');
-    const projectTabs = document.querySelectorAll('.project-tab');
-    const projects = document.querySelectorAll('#beginner-panel .project');
 
-    const modalOverlay = document.getElementById('modal-overlay');
-    const modalClose = document.getElementById('modal-close');
-    const modalSubmitBtn = document.getElementById('modal-submit-btn');
-    const modalSubmitStatus = document.getElementById('modal-submit-status');
-    const modalProjectDisplay = document.getElementById('modal-project-display');
-    const inputRepo = document.getElementById('input-repo');
-    const extractedUserEl = document.getElementById('extracted-user');
-
-    // ── Tab Management ──
     function updateTopTab(activeTab) {
       topTabs.forEach(tab => { if (!tab.classList.contains('disabled')) tab.classList.toggle('active', tab === activeTab); });
       const tabName = activeTab.dataset.tab;
@@ -827,13 +469,14 @@
       } else {
         projectTabsContainer.classList.toggle('hidden', tabName !== 'beginner');
         submitBtnHeader.classList.toggle('hidden', tabName !== 'beginner');
-        if (tabName === 'beginner') beginnerPanel.classList.add('active');
-        if (tabName === 'intermediate') intermediatePanel.classList.add('active');
-        if (tabName === 'advanced') advancedPanel.classList.add('active');
+        document.getElementById(`${tabName}-panel`).classList.add('active');
       }
     }
 
     topTabs.forEach(tab => { if (!tab.classList.contains('disabled')) tab.addEventListener('click', () => updateTopTab(tab)); });
+
+    const projectTabs = document.querySelectorAll('.project-tab');
+    const projects = document.querySelectorAll('#beginner-panel .project');
 
     projectTabs.forEach(tab => {
       tab.addEventListener('click', () => {
@@ -842,14 +485,28 @@
       });
     });
 
-    // ── Repository Validation ──
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalClose = document.getElementById('modal-close');
+    const modalSubmitBtn = document.getElementById('modal-submit-btn');
+    const modalSubmitStatus = document.getElementById('modal-submit-status');
+    const modalProjectDisplay = document.getElementById('modal-project-display');
+    const inputRepo = document.getElementById('input-repo');
+    const extractedUserEl = document.getElementById('extracted-user');
+
+    let extractedUsername = null;
+
+    function showExtractedUser(state, message) {
+      extractedUserEl.className = `extracted-user ${state}`;
+      extractedUserEl.innerHTML = state === 'loading' ? `<div class="spinner"></div> Validating repository...` : message;
+    }
+
     function parseGithubUrl(url) {
       try {
-        let fullUrl = url.trim();
-        if (!/^https?:\/\//i.test(fullUrl)) fullUrl = 'https://' + fullUrl;
-        const u = new URL(fullUrl);
+        let cleanUrl = url.trim();
+        if (!/^https?:\/\//i.test(cleanUrl)) cleanUrl = 'https://' + cleanUrl;
+        const u = new URL(cleanUrl);
         if (!/github\.com$/i.test(u.hostname)) return null;
-        const parts = u.pathname.split('/').filter(p => p);
+        const parts = u.pathname.split('/').filter(Boolean);
         if (parts.length < 2) return null;
         return { owner: parts[0], repo: parts[1].replace(/\.git$/i, '') };
       } catch { return null; }
@@ -858,50 +515,39 @@
     async function validateRepo(url) {
       const parsed = parseGithubUrl(url);
       if (!parsed) {
-        showExtractedUser('error', 'Invalid GitHub URL format');
+        showExtractedUser('error', '✗ Invalid GitHub URL format');
         return;
       }
-      showExtractedUser('loading');
+      showExtractedUser('loading', '');
       try {
-        const response = await fetch(`https://api.github.com/repos/${parsed.owner}/${parsed.repo}`);
-        if (response.status === 404) showExtractedUser('error', 'Repository not found or private');
-        else if (!response.ok) showExtractedUser('error', 'Validation error');
-        else {
-          const data = await response.json();
-          extractedUsername = data.owner.login;
-          showExtractedUser('valid', `Submitting as: ${extractedUsername}/${parsed.repo}`);
-          modalSubmitBtn.disabled = false;
+        const res = await fetch(`https://api.github.com/repos/${parsed.owner}/${parsed.repo}`);
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        if (data.owner.type === 'Organization') {
+          showExtractedUser('error', '✗ Organizations are not allowed.');
+          return;
         }
-      } catch { showExtractedUser('error', 'Network error tracking repository'); }
+        extractedUsername = data.owner.login;
+        showExtractedUser('valid', `✓ Submitting as: <strong>${extractedUsername}</strong>`);
+        modalSubmitBtn.disabled = false;
+      } catch {
+        showExtractedUser('error', '✗ Repository not found or is private');
+      }
     }
 
-    function showExtractedUser(state, msg) {
-      extractedUserEl.className = 'extracted-user ' + state;
-      if (state === 'loading') extractedUserEl.innerHTML = '<div class="spinner"></div> Validating repository...';
-      else if (state === 'valid') extractedUserEl.textContent = `✓ ${msg}`;
-      else if (state === 'error') extractedUserEl.textContent = `✗ ${msg}`;
-      else extractedUserEl.textContent = '';
-    }
-
+    let valTimeout;
     inputRepo.addEventListener('input', () => {
-      clearTimeout(validateTimeout);
+      clearTimeout(valTimeout);
       modalSubmitBtn.disabled = true;
-      showExtractedUser('');
+      showExtractedUser('', '');
+      if (inputRepo.value.trim()) valTimeout = setTimeout(() => validateRepo(inputRepo.value), 500);
     });
 
-    inputRepo.addEventListener('blur', () => {
-      if (inputRepo.value.trim()) validateTimeout = setTimeout(() => validateRepo(inputRepo.value), 300);
-    });
-
-    // ── Form Submissions ──
     submitBtnHeader.addEventListener('click', () => {
-      const active = document.querySelector('.project-tab.active').dataset.project;
-      modalProjectDisplay.textContent = projectNames[active];
-      modalProjectDisplay.dataset.project = active;
+      const active = document.querySelector('.project-tab.active');
+      modalProjectDisplay.textContent = projectNames[active.dataset.project];
+      modalProjectDisplay.dataset.project = active.dataset.project;
       modalOverlay.classList.add('visible');
-      inputRepo.value = '';
-      showExtractedUser('');
-      modalSubmitStatus.className = 'submit-status';
     });
 
     modalClose.addEventListener('click', () => modalOverlay.classList.remove('visible'));
@@ -909,7 +555,7 @@
     modalSubmitBtn.addEventListener('click', async () => {
       modalSubmitBtn.disabled = true;
       modalSubmitStatus.className = 'submit-status visible pending';
-      modalSubmitStatus.textContent = '⏳ Submitting...';
+      modalSubmitStatus.textContent = '⏳ Triggering validator pipeline...';
 
       try {
         const res = await fetch(SUBMIT_URL, {
@@ -919,82 +565,79 @@
             github_username: extractedUsername,
             repo_url: inputRepo.value.trim(),
             project_type: modalProjectDisplay.dataset.project
-          }),
+          })
         });
         const data = await res.json();
         if (res.ok && data.success) {
           modalSubmitStatus.className = 'submit-status visible success';
-          modalSubmitStatus.textContent = '✓ Submitted successfully! Updates show on the leaderboard within a minute.';
+          modalSubmitStatus.textContent = '✓ Actions workflow started! Score will compute in ~60s.';
           setTimeout(() => modalOverlay.classList.remove('visible'), 2500);
         } else {
-          modalSubmitStatus.className = 'submit-status visible error';
-          modalSubmitStatus.textContent = `✗ ${data.error || 'Submission failed.'}`;
-          modalSubmitBtn.disabled = false;
+          throw new Error(data.error || 'Submission failed');
         }
-      } catch {
+      } catch (err) {
         modalSubmitStatus.className = 'submit-status visible error';
-        modalSubmitStatus.textContent = '✗ Network link lost.';
+        modalSubmitStatus.textContent = err.message;
         modalSubmitBtn.disabled = false;
       }
     });
 
-    // ── Leaderboard Fetching & Rendering ──
+    let allEntries = [];
+    let activeFilter = 'all';
+
     async function fetchLeaderboard() {
       const container = document.getElementById('lb-container');
-      container.innerHTML = '<div class="lb-loading"><div class="spinner"></div> Loading leaderboard...</div>';
       try {
         const res = await fetch(LEADERBOARD_URL, { headers: { 'apikey': SUPABASE_ANON, 'Authorization': `Bearer ${SUPABASE_ANON}` } });
-        if (!res.ok) throw new Error();
         allEntries = await res.json();
-        applyFilter();
+        renderTable();
       } catch {
-        container.innerHTML = '<div class="lb-state"><div class="icon">⚠️</div>Failed to load leaderboard.</div>';
+        container.innerHTML = `<div class="lb-state">⚠️ Failed to load leaderboard rankings.</div>`;
       }
     }
 
-    function applyFilter() {
+    function renderTable() {
       const container = document.getElementById('lb-container');
-      const data = activeFilter === 'all' ? allEntries : allEntries.filter(e => {
+      const filtered = activeFilter === 'all' ? allEntries : allEntries.filter(e => {
         const scores = typeof e.project_scores === 'string' ? JSON.parse(e.project_scores) : e.project_scores;
         return scores && scores[activeFilter] > 0;
       });
 
-      if (!data.length) {
-        container.innerHTML = '<div class="lb-state"><div class="icon">🏁</div>Be the first to finish this project!</div>';
+      if (!filtered.length) {
+        container.innerHTML = `<div class="lb-state">🏁 No verified solutions found for this category.</div>`;
         return;
       }
 
-      let html = `<table class="lb-table"><thead><tr><th>Rank</th><th>Username</th><th>${activeFilter === 'all' ? 'Projects' : 'Project'}</th><th>Score</th><th>Progress</th><th>Date</th></tr></thead><tbody>`;
-      
-      data.forEach((e, i) => {
+      const rows = filtered.map((e, idx) => {
         const scores = typeof e.project_scores === 'string' ? JSON.parse(e.project_scores) : e.project_scores;
-        const finalScore = activeFilter === 'all' ? e.total_score : (scores[activeFilter] || 0);
-        const maxPossible = activeFilter === 'all' ? Object.keys(scores).length * 115 : 115;
-        const pct = Math.min(100, Math.round((finalScore / maxPossible) * 100));
-        
-        let displayBadges = '';
-        if (activeFilter === 'all') {
-          displayBadges = Object.entries(scores).map(([proj, scr]) => `<span class="lb-project ${proj}">${proj}: ${scr}</span>`).join('');
+        const currentScore = activeFilter === 'all' ? e.total_score : (scores[activeFilter] || 0);
+        const maxPossible = activeFilter === 'all' ? (Object.keys(scores || {}).length * 115) : 115;
+        const pct = Math.min(100, Math.round((currentScore / (maxPossible || 1)) * 100));
+
+        let badges = '';
+        if (activeFilter === 'all' && scores) {
+          badges = Object.entries(scores).map(([p, s]) => `<span class="lb-project ${p}">${p}: ${s}</span>`).join(' ');
         } else {
-          displayBadges = `<span class="lb-project ${activeFilter}">${activeFilter}</span>`;
+          badges = `<span class="lb-project ${activeFilter}">${activeFilter}</span>`;
         }
 
-        const dateStr = new Date(e.validated_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
-        const badgeCls = (i==0) ? 'rank-1' : (i==1) ? 'rank-2' : (i==2) ? 'rank-3' : 'rank-other';
-        const badgeTxt = (i==0) ? '🥇' : (i==1) ? '🥈' : (i==2) ? '🥉' : `#${i+1}`;
+        const rankLabel = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `#${idx + 1}`;
+        const rankCls = idx < 3 ? `rank-${idx + 1}` : 'rank-other';
 
-        html += `<tr>
-          <td><span class="rank-badge ${badgeCls}">${badgeTxt}</span></td>
-          <td><span class="lb-username">${e.masked_username || 'Anonymous'}</span></td>
-          <td>${displayBadges}</td>
-          <td><span class="lb-score">${finalScore}</span></td>
-          <td><div class="score-bar-wrap"><div class="score-bar" style="width:${pct}%; background:${pct > 75 ? 'var(--green)' : 'var(--accent)'}"></div></div></td>
-          <td><span class="lb-date">${dateStr}</span></td>
+        return `<tr>
+          <td><span class="rank-badge ${rankCls}">${rankLabel}</span></td>
+          <td><span class="lb-username">${e.masked_username}</span></td>
+          <td>${badges}</td>
+          <td><span class="lb-score">${currentScore}</span></td>
+          <td><div class="score-bar-wrap"><div class="score-bar" style="width:${pct}%; background:var(--accent)"></div></div></td>
+          <td><span class="lb-date">${new Date(e.validated_at).toLocaleDateString('en-GB')}</span></td>
         </tr>`;
-      });
+      }).join('');
 
-      html += '</tbody></table>';
-      container.innerHTML = html;
+      container.innerHTML = `<table class="lb-table">
+        <thead><tr><th>Rank</th><th>User</th><th>Projects</th><th>Score</th><th>Progress</th><th>Date</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
     }
 
     document.querySelectorAll('.lb-filter').forEach(btn => {
@@ -1002,9 +645,11 @@
         document.querySelectorAll('.lb-filter').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         activeFilter = btn.dataset.filter;
-        applyFilter();
+        renderTable();
       });
     });
+
+    updateTopTab(document.querySelector('.top-tab[data-tab="beginner"]'));
   </script>
 </body>
 </html>
