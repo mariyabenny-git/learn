@@ -1,0 +1,48 @@
+name: Project Automated Grading Pipeline
+on:
+  repository_dispatch:
+    types: [validate-submission]
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hard-Checkout Automation Root Structure
+        uses: actions/checkout@v4
+
+      - name: Initialize Isolated Node Execution Environment
+        uses: actions/setup-node@v4
+        with:
+          node-cache: 'npm'
+          node-version: 18
+          cache-dependency-path: .github/validator/package.json
+
+      - name: Mount Project Root Dependencies
+        run: |
+          cd .github/validator
+          npm install
+
+      - name: Deep-Clone Student Code Repository
+        run: |
+          git clone ${{ github.event.client_payload.repo_url }} student_repo
+
+      - name: Execute Automated Structural & Functional Logic Rules Evaluation
+        id: test_runner
+        env:
+          PROJECT_TYPE: ${{ github.event.client_payload.project_type }}
+          STUDENT_REPO_PATH: ${{ github.workspace }}/student_repo
+        run: |
+          cd .github/validator
+          node index.js
+
+      - name: Dispatch Evaluation Metrics to Supabase Gateway
+        if: always()
+        env:
+          SUPABASE_URL: "https://bjfbfhnbdgtkqnqtrkrl.supabase.co"
+          SUPABASE_FUNCTION_KEY: ${{ secrets.SUPABASE_TRACKING_SECRET }}
+          GITHUB_USERNAME: ${{ github.event.client_payload.github_username }}
+          REPO_URL: ${{ github.event.client_payload.repo_url }}
+          PROJECT_TYPE: ${{ github.event.client_payload.project_type }}
+        run: |
+          cd .github/validator
+          node send-result.js
